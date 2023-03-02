@@ -1,0 +1,30 @@
+From e295e3b5f9c47f0865482e1989772223b2c7f22c Mon Sep 17 00:00:00 2001
+From: Anonym3310 <anonym3310228@gmail.com>
+Date: Thu, 2 Mar 2023 10:23:32 +0000
+Subject: [PATCH] fix
+
+Dirty bypass restrictions by disabling validation "Cannot install into target '$TARGET' mounted with noexec or nodev"
+---
+ debootstrap | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/debootstrap b/debootstrap
+index d435021..4fc5288 100755
+--- a/debootstrap
++++ b/debootstrap
+@@ -586,9 +586,9 @@ if am_doing_phase first_stage second_stage; then
+ 		error 1 NEEDROOT "debootstrap can only run as root"
+ 	fi
+ 	# Ensure that we can create working devices and executables on the target.
+-	if ! check_sane_mount "$TARGET"; then
+-		error 1 NOEXEC "Cannot install into target '$TARGET' mounted with noexec or nodev"
+-	fi
++#	if ! check_sane_mount "$TARGET"; then
++#		error 1 NOEXEC "Cannot install into target '$TARGET' mounted with noexec or nodev"
++#	fi
+ fi
+ 
+ if [ ! -e "$SCRIPT" ]; then
+-- 
+2.25.1
+
