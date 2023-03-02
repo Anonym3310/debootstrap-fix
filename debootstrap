@@ -586,9 +586,9 @@ if am_doing_phase first_stage second_stage; then
 		error 1 NEEDROOT "debootstrap can only run as root"
 	fi
 	# Ensure that we can create working devices and executables on the target.
-	if ! check_sane_mount "$TARGET"; then
-		error 1 NOEXEC "Cannot install into target '$TARGET' mounted with noexec or nodev"
-	fi
+#	if ! check_sane_mount "$TARGET"; then
+#		error 1 NOEXEC "Cannot install into target '$TARGET' mounted with noexec or nodev"
+#	fi
 fi
 
 if [ ! -e "$SCRIPT" ]; then
